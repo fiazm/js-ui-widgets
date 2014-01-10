@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>UI Elements</title>
+        <meta content="Content-type: text/html;charset=utf-8">
+
+        <style>
+            @font-face{
+                font-family:"Pacaya";
+                src:url('http://localhost/fonts/Pacaya.otf');
+            }
+
+            @font-face{
+                font-family:"Bonveno";
+                src:url('http://localhost/fonts/BonvenoCF-Light.otf');
+            }
+
+            body{
+                color:#676767;
+                background-color:#fff;
+            }
+
+            ul.menu{
+                border:1px solid #ddd;
+                border-radius: 10px;
+                box-shadow: 0px 0px 2px 2px #eee;
+                overflow: auto;
+                padding:0px;
+                margin:0px;
+                width:auto;
+            }
+
+            ul.menu li:first-child{
+                border-right: 1px solid #aaa;
+                margin-left:10px;
+            }
+
+            ul.menu li:last-child{
+                border-right: none;
+            }
+
+            ul.menu li{
+                list-style: none;
+                display: inline-block;
+                padding:10px;
+                border-right: 1px solid #aaa;
+                text-indent: 0px;
+                cursor: pointer;
+            }
+
+            fieldset{
+                border:1px solid #aaa;
+            }
+
+            legend{font-weight:bold;font-family:"Pacaya";color:#0099ff}
+
+            input[type=text],input[type=button],input[type=submit],textarea{
+                background-color:#fff;
+                border:1px solid #aaa;
+                padding:5px;
+                color:#676767;
+                border-radius: 10px;
+
+            }
+
+            input[type=text]:hover,input[type=text]:active,textarea:hover,textarea:active{
+                box-shadow: 0px 0px 2px 2px #66ccff;
+                border:1px solid #66ccff;
+            }
+
+            input[type=button]:hover,input[type=button]:active{
+                box-shadow: 0px 0px 2px 2px #66ccff;
+                border:1px solid #66ccff;
+                cursor:pointer;
+            }  
+
+
+            h1,h2,h3,h4,h5,h6{
+                font-family: 'Pacaya'; 
+                font-style: normal;
+                text-shadow: 0px 0px 2px #8888ff;
+                padding-top: 10px;
+                padding-bottom: 10px;
+            }
+
+            input[type=button],input[type=submit]{
+                background: -webkit-linear-gradient(#f7f7f7, #fff,#f7f7f7); /* For Safari */
+                background: -o-linear-gradient(#f7f7f7, #fff,#f7f7f7); /* For Opera 11.1 to 12.0 */
+                background: -moz-linear-gradient(#f7f7f7, #fff,#f7f7f7); /* For Firefox 3.6 to 15 */
+                background: linear-gradient(#f7f7f7, #fff,#f7f7f7); /* Standard syntax */                
+            }
+
+            h1,h2{
+                background: -webkit-linear-gradient(#f7f7f7, #fff,#f7f7f7); /* For Safari */
+                background: -o-linear-gradient(#f7f7f7, #fff,#f7f7f7); /* For Opera 11.1 to 12.0 */
+                background: -moz-linear-gradient(#f7f7f7, #fff,#f7f7f7); /* For Firefox 3.6 to 15 */
+                background: linear-gradient(#f7f7f7, #fff,#f7f7f7); /* Standard syntax */            
+                text-shadow: 0px 0px 3px #8888ff;
+            }
+
+            div,p{
+                font-family: "Bonveno";
+                font-size:12pt;
+                font-style: normal;
+                color:#555;
+            }
+        </style>
+
+        <script>
+
+            var menu = ["Home", "UI", "Tutorials"];
+
+            window.onload = init;
+
+            function init() {
+
+            }
+
+            function Menu() {
+                this.items = new Array;
+                this.tag = "";
+
+                this.addItem = addItem;
+                function addItem(item) {
+                    this.items.push(item);
+                }
+
+                this.removeItem = removeItem;
+                function removeItem(item) {
+                    this.items.pop(item);
+                }
+
+                this.setTag = setTag;
+                function setTag(t) {
+                    this.tag = t;
+                }
+
+                this.getTag = getTag;
+                function getTag() {
+                    return this.tag.toString();
+                }
+
+                this.update = update;
+                function update() {
+                    this.render();
+                }
+
+                this.render = render;
+                function render(doc) {
+                    var ul = document.createElement("ul");
+                    for (var i = 0; i < this.items.length; i++) {
+                        var li = document.createElement("li");
+                        ul.appendChild(li);
+                    }
+                    document.appendChild(ul);
+                }
+            }
+
+
+
+        </script>
+    </head>
+    <body>
+        <fieldset>
+            <legend>Menu</legend>
+            <ul class="menu">
+                <li>Home</li>
+                <li>UI</li>
+                <li>Tutorials</li>
+                <li class="last-child">Useful Scripts</li>
+            </ul>
+        </fieldset>
+
+        <fieldset>
+            <legend>Text Input</legend>
+            <input type="text" value=""/>
+            <input type="button" value="Click here"/>
+            <br>
+            <textarea rows="4" cols="20">Some text</textarea>
+        </fieldset>
+        <fieldset>
+            <legend>Content</legend>
+            <div>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </div>
+            <p>
+                But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful.
+            </p>
+        </fieldset>
+        <fieldset>
+            <legend>Code</legend>
+            <code>
+                echo "Hello, world!";
+            </code>          
+        </fieldset>
+        <fieldset>
+            <legend>Heading/Title</legend>
+            <h1>The standard Lorem Ipsum passage, used since the 1500s</h1>
+            <h2>The standard Lorem Ipsum passage, used since the 1500s</h2>
+            <h3>The standard Lorem Ipsum passage, used since the 1500s</h3>
+            <h4>The standard Lorem Ipsum passage, used since the 1500s</h4>
+            <h5>The standard Lorem Ipsum passage, used since the 1500s</h5>
+            <h6>The standard Lorem Ipsum passage, used since the 1500s</h6>
+        </fieldset>
+        <fieldset class="image-container">
+            <legend>Image MouseUp Effect</legend>
+            <img id="img" style="display:block;position:relative;left:0px;" width="400" src="./images/1.jpg"/>    
+            <script type="text/javascript">
+                var start_left = 0;
+                document.getElementById("img").onmouseup = function() {
+                    animation(this, 0, 0);
+                }
+
+                function animation(elem, prev_left, c) {
+                    c++;
+                    var cur_left = 100 * Math.sin(c);
+                    elem.style.left = parseInt(cur_left) + "px";
+
+                    console.log(cur_left);
+                    mozRequestAnimationFrame(function(){
+                        setTimeout(function() {
+                            if (cur_left < 50) {
+                                animation(elem, cur_left, c);
+                            }
+                        },1000/60);
+                    });
+
+                }
+
+            </script>
+        </fieldset>
+        <fieldset id="geometry">
+            <legend>Canvas - Geometry</legend>
+            <canvas width="640" height="400" id="geo">
+
+            </canvas>
+            <script>
+                var canvas = document.getElementById("geo");
+                var ctx = canvas.getContext("2d");
+
+                function init() {
+                    ctx.beginPath();
+
+                    ctx.strokeStyle = "#ffffff";
+                    ctx.fillStyle = "#000000";
+                    ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+                    ctx.fill();
+                    ctx.globalAlpha = 1.0;
+
+                }
+                
+
+                var x = 0;
+                var y = 0;
+                function draw(ctx) {
+
+
+                    ctx.globalAlpha = Math.cos(x * 2 * Math.PI / 180);
+                    ctx.beginPath();
+                    //ctx.globalAlpha= 0.99;
+                    ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+                    
+                    ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+                    ctx.fill();
+
+                    y = ctx.canvas.height/2*Math.sin(2*Math.PI*x/90);
+
+                    ctx.lineTo(x, y);
+                    ctx.stroke();
+                    console.log(y);
+                    ctx.globalAlpha = 1.0 - 1.0 / (ctx.canvas.height / 2);
+
+                    ctx.beginPath();
+                    var red = parseInt(255*x/ctx.canvas.width);
+                    var green = parseInt(255*y/ctx.canvas.width);
+                    var blue = 0;
+                    var rgb = 'rgb('+red.toString()+','+green.toString()+','+blue.toString()+')';
+                    ctx.fillStyle = rgb;
+                    //ctx.fillStyle = "#ffffff";
+                    ctx.arc(x, ctx.canvas.height / 2 - y, 10, 0, Math.PI * 2);
+                    ctx.stroke()
+                    ctx.fill();
+
+                    ctx.fillStyle = "#000000";
+/*  
+                    ctx.beginPath();
+                    ctx.moveTo(x, 0);
+                    ctx.lineTo(x, ctx.canvas.height);
+                    ctx.closePath();
+                    ctx.stroke();
+                    ctx.beginPath();
+                    ctx.moveTo(0, y - ctx.canvas.height / 2);
+                    ctx.lineTo(ctx.canvas.width, y - ctx.canvas.height / 2);
+                    ctx.stroke();
+                    ctx.closePath();
+
+                    ctx.beginPath();
+                    ctx.lineTo(ctx.canvas.width / 2, ctx.canvas.height / 2);
+                    ctx.lineTo(x, y - ctx.canvas.height / 2);
+                    ctx.stroke();
+                    */
+                    x = x + 1;
+                    
+                    //ctx.clearRect(0,0,ctx.canvas.width,ctx.canvas.height);
+                    //ctx.strokeStyle = "#cccccc";
+                    if (x <= ctx.canvas.width) {
+                        mozRequestAnimationFrame(function() {
+                            setTimeout(function() {
+                                draw(ctx);
+                            }, 1000/60*Math.sin(2*x*Math.PI/180) );
+                        });
+                    }
+                }
+                init();
+                draw(ctx);
+                draw(ctx);
+
+            </script>
+        </fieldset>
+    </body>
+</html>
