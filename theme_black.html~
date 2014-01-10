@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>UI</title>
+<style>
+
+@font-face{
+    font-family:"Pacaya";
+    src:url('http://localhost/fonts/Pacaya.otf');
+}
+
+@font-face{
+    font-family:"Bonveno";
+    src:url('http://localhost/fonts/BonvenoCF-Light.otf');
+}
+
+@font-face{
+  font-family:"Symbols";
+  src:url('http://localhost/fonts/WebSymbols-Regular.otf');
+}
+
+@font-face{
+  font-family:"Entypo";
+  src:url('http://localhost/fonts/Entypo.otf');
+}
+
+body,html{
+margin:0px;
+overflow:hidden;
+background-color:#000;
+color:#ffaa00;
+
+}
+
+#navigation{
+background-color:#ffaa00;
+}
+
+#navigation{
+  margin:0px;
+  padding:0px;
+  overflow:auto;
+  display:block;
+  padding-left:200px;
+}
+
+
+
+#wrapper{
+  margin:0px;
+  border:5px solid #ffaa00;
+  font-family:"Pacaya";
+  font-size:18pt;
+  overflow:hidden;
+}
+
+#left-menu{
+  list-style:none;
+  padding:0px;
+  margin:0px;
+}
+
+
+
+#left-menu li a{
+  font-size:14pt;
+  color:#fff;
+  padding:15px;
+  text-decoration:none;
+}
+
+
+
+#left-menu li{
+  border:5px;
+  border-bottom:1px solid #ffaa00;
+  text-align:center;
+}
+
+#navigation div a{
+  color:#000;
+  text-decoration:none;
+  text-align:center;
+  font-weight:bold;
+  font-family:"Symbols";
+  font-size:24pt;
+}
+
+#navigation div {
+  float:left;
+  border-bottom:0px solid #fff;
+  width:120px;
+  /*margin-left:10px;*/
+  padding:5px;
+  text-align:center;
+}
+
+#left-menu:first-child{
+  border-top:0px solid #000;
+}
+
+#wrapper,#left-sidebar,#right-sidebar{
+  position:absolute;
+}
+
+#content-wrapper{
+  padding:10px;
+  color:#fff;
+  font-family:"Bonveno";
+  border:1px solid #ffaa00;
+}
+
+#logo{
+position:absolute;
+left:5px;
+top:5px;
+border:5px solid #000;
+background-color:#000;
+width:190px;
+color:#ffaa00;
+font-family:"Symbols";
+z-index:99;
+text-align:center;
+font-size:24pt;
+
+text-shadow:2px 2px 2px #aa7700;
+}
+</style>
+<script>
+function init(){
+  initVariables();
+  initDimensions();
+  initContentView();
+  initNavigationPane();
+  initEvents();
+}
+
+function initVariables(){
+  window.contentLinksList = ["Dashboard","Settings", "Exit"];
+  Window.contentList = [
+  "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+  "But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful."];
+  window.Menu = document.getElementById("left-menu");
+  window.Wrapper = document.getElementById("wrapper");
+  window.Sidebar = document.getElementById("left-sidebar");
+  window.ContentPane = document.getElementById("content-wrapper");
+  window.NavPanItems = ["A","B","C","D"];
+  window.NavPane = document.getElementById("navigation");
+  window.CharView = document.getElementById("logo");
+}
+
+function initDimensions(){
+  NavPane.style.backgroundColor = "#ffaa00";
+  NavPane.style.color = "#000";
+  NavPane.style.position = "absolute";
+  NavPane.style.left = "0px";
+  NavPane.style.width = window.innerWidth + "px";
+  NavPane.style.height = "60px";
+
+  Wrapper.style.position = "absolute";
+  Wrapper.style.left = "0px";
+  Wrapper.style.top = parseInt(NavPane.style.height) +  "px";
+  Wrapper.style.padding = "0px";
+  Wrapper.style.margin = "0px";
+  Wrapper.style.width = window.innerWidth - 10 + "px";
+  Wrapper.style.maxWidth = window.innerWidth + "px";
+  Wrapper.style.height = window.innerHeight - parseInt(Wrapper.style.top) - window.screenY/3 +  "px";
+  console.log(window);
+  
+  Sidebar.style.position = "absolute";
+  Sidebar.style.width = "200px";
+  Sidebar.style.height = Wrapper.style.height;
+  Sidebar.style.borderRight = "6px solid #ffaa00";
+  
+  ContentPane.style.position="absolute";
+  ContentPane.style.left = parseInt(Sidebar.style.width) + 6 + "px";
+  ContentPane.style.width = parseInt(Wrapper.style.width) - parseInt(Sidebar.style.width) - 8 + "px";
+  
+  CharView.style.width = "60px";
+  CharView.style.height = "60px";
+}
+
+function KeyPressed(event){
+  CharView.innerHTML = String.fromCharCode(event.charCode);
+}
+
+function initEvents(){
+  window.onkeypress = KeyPressed;
+  
+  ContentPane.onmousedown = function(){
+
+  };
+
+  ContentPane.onmousemove = function(){
+
+  };
+
+  ContentPane.onmouseup = function(){
+
+  };
+}
+
+function initContentView(){
+  for(var i = 0; i < contentLinksList.length ; i++){
+    var li = document.createElement("li");
+    Menu.appendChild(li);
+    var a = document.createElement("a");
+    li.appendChild(a);
+    li.style.padding="20px";
+    a.href = "#" + contentLinksList[i].replace(" ","-");
+    var span = document.createElement("span");
+    span.setAttribute("class","dingbats");
+    span.style.fontFamily="Symbols";
+    
+    var randomChar = String.fromCharCode(Math.floor(60 + 26*Math.random()));
+    
+    a.innerHTML = randomChar + " " + contentLinksList[i].toUpperCase();
+    
+    span.innerHTML = " " + randomChar + " ";
+    span.style.color="#ffaa00";
+    span.style.margin="10px";
+    a.appendChild(span);
+  }
+}
+
+function initNavigationPane(){
+  for(var i = 0; i < NavPanItems.length ; i++){
+    var li = document.createElement("div");
+    NavPane.appendChild(li);
+    
+    var a = document.createElement("a");
+    li.appendChild(a);
+    li.style.padding="12px";
+    a.href = "#" + NavPanItems[i].replace(" ","-");
+    var span = document.createElement("span");
+    span.setAttribute("class","dingbats");
+    span.style.fontFamily="Symbols";
+    a.innerHTML = NavPanItems[i].toUpperCase();
+    var randomChar = NavPanItems[i] + " " + String.fromCharCode(Math.floor(60 + 26*Math.random()));
+    span.innerHTML = randomChar;
+    span.style.color="#ffaa00";
+    //a.appendChild(span);
+  }
+}
+
+window.onresize = function(){
+  initDimensions();
+}
+
+
+</script>
+</head>
+<body onload="init()">
+<div id="logo">
+
+</div>
+<div id="navigation">
+
+</div>
+<div id="wrapper">
+
+<div id="left-sidebar">
+<ul id="left-menu">
+</ul>
+</div>
+<div id="content-wrapper">
+ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. 
+</div>
+<div id="right-sidebar">
+
+</div>
+</div>
+</body>
+</html>
